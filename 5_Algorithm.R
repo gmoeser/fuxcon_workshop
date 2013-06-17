@@ -8,7 +8,6 @@ library(stringr)
 ## Insert Algoirthm here
 
 # Read R function score.sentiment.R
+## You should change the directory!!
 source('D:/Google Drive/02_Science/Publikationen/Moeser & Moryson 2013/score.sentiment.R')
 
-# Call function
-# ...
