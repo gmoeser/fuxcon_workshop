@@ -1,12 +1,17 @@
 ## Score the tweets
 
-# only english tweets - corpus contents only English words!
-tweet_list_en <- subset(tweet_list_complete, lang == "en")
-tweet_list_en
+## A few changes are necessary - just play a little around with possibilities here and see,
+## if score.sentiment-function is running!!
 
-# apple
+##  Step 1 - English language
+tweet_list_en <- subset(tweet_list_complete, lang == "en")
+# Show some results
+head(tweet_list_en)
+
+## Step 2 - Only Apple
 tweet_list_en_apple <- subset(tweet_list_en, company == "apple")
-twitter_corpus_en_apple <- tweet_list_en_apple$test
+twitter_corpus_en_apple <- tweet_list_en_apple$text
+# Show some tweets
 head(twitter_corpus_en_apple)
 
 
