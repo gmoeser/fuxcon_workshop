@@ -167,70 +167,18 @@ t_m1
 (t_m1[1,1] + t_m1[2,2] + t_m1[3,3] + t_m1[4,4]) / dim(m)[1]
 
 
-## USe tuning to improve performance of svm - use crossfolding
-system.time(obj1 <- tune(svm, m, tweets_apple_en_sentiment,
-                         ranges = list(gamma = seq(0, 2, 0.05), cost = 2^(1:5)),
-                         tunecontrol = tune.control(sampling = "cross"), cross = 2))
-summary(obj1)
+## Use tuning to improve performance of svm - use crossfolding
+## This is very time intensive, so I commented it out - if you want to do it, uncomment it!
+#system.time(obj1 <- tune(svm, m, tweets_apple_en_sentiment,
+#                         ranges = list(gamma = seq(0, 2, 0.05), cost = 2^(1:5)),
+#                         tunecontrol = tune.control(sampling = "cross"), cross = 2))
+#summary(obj1)
 
-## USe tuning to improve performance of svm - use crossfolding
-system.time(obj2 <- tune(svm, m, tweets_apple_en_sentiment,
-                         ranges = list(gamma = seq(0, 1, 0.01), cost = 2^(1:5)),
-                         tunecontrol = tune.control(sampling = "cross"), cross = 2))
-summary(obj2)
-
-
-## SVM with tuned parameters
-system.time(model2 <- svm(m, tweets_apple_en_sentiment,  gamma = 0.05, cost = 4, fitted = TRUE, cross=3, cachesize = 500))
-summary(model2)
-table(model2$fitted, tweets_apple_en_sentiment)
-
-
-
-
-
-
-
-## Train with crossfolding
-## !! fitted = TRUE --> Training Set results will be shown!
-#system.time(model2 <- svm(m, tweets_apple_en_sentiment,  fitted = TRUE, cross=10, cachesize = 500))
-
-## SVM with tuned parameters
-system.time(model2 <- svm(m, tweets_apple_en_sentiment,  gamma = 0.1, cost = 2, fitted = TRUE, cross=4, cachesize = 500))
-summary(model2)
-table(model2$fitted, tweets_apple_en_sentiment)
-
-
-
-
-## Use model to train the dataset
-pred <- predict(model2, m)
-table(pred, tweets_apple_en_sentiment)
-## Calculate quality in training data set
-t_m2 <- table(pred, tweets_apple_en_sentiment)
-(t_m2[1,1] + t_m2[2,2] + t_m2[3,3] + t_m2[4,4]) / dim(m)[1]
-
-
-
-
-
-
-
-
-## Next step:
-## Tune model
-
-# test with train data
-pred <- predict(model, m)
-table(pred, tweets_apple_en_sentiment)
-
-
-
-
-# Fill in tuning parameters
-system.time(model3 <- svm(m, tweets_apple_en_sentiment, gamma = 0.1, cost = 8, cross=10, cachesize = 500))
-summary(model3)
-table(model3$fitted, tweets_apple_en_sentiment)
+## Use tuning to improve performance of svm - use crossfolding
+#system.time(obj2 <- tune(svm, m, tweets_apple_en_sentiment,
+#                         ranges = list(gamma = seq(0, 1, 0.01), cost = 2^(1:5)),
+#                         tunecontrol = tune.control(sampling = "cross"), cross = 2))
+#summary(obj2)
 
 
 
