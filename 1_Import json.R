@@ -4,6 +4,7 @@ library(RJSONIO)
 
 
 ## Set working directory
+## You should change to:  directory where the tweets are stored
 setwd("D:/Google Drive/02_Science/Publikationen/Moeser & Moryson 2013/BLOG Twitter/rawdata")
 
 
@@ -34,7 +35,7 @@ for (i in 0:leng) {
 
 
 ## Label dataset
-names(tweet_list) <- c("id_str", "id", "id_control", "test", "lang", "created_at" )
+names(tweet_list) <- c("id_str", "id", "id_control", "text", "lang", "created_at" )
 
 
 ## Clean up
