@@ -1,10 +1,13 @@
 ## Import Sentiment and Merge Datasets
 
 ## Install and load required packages
+# hwriter is only required if you want to store the dataset outside R
+# hwriter enables storage in HTML
 #install.packages("hwriter", dependencies = TRUE)
 library(hwriter)
 
 ## Set working directory
+## You should change this!!
 setwd("D:/Google Drive/02_Science/Publikationen/Moeser & Moryson 2013/BLOG Twitter/")
 
 ## Read in corpus.csv dataset
@@ -31,9 +34,11 @@ rm(tweet_list)
 rm(tweet_sentiments)
 
 ## Save to html
+## You should change this!!
 setwd("D:/Google Drive/02_Science/Publikationen/Moeser & Moryson 2013/BLOG Twitter/")
 
 # Write out dataset as HTML table
+# We use a html-table here because xls etc is problematic
 hwrite(tweet_list_complete, "tweets.html")
 
 
